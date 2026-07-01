@@ -4,8 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: teal;
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            height: 100%;
+        }
+        header ul li {
+            list-style: none;
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        header ul {
+            display: flex;
+            margin: 20px;
+        }
+        header a {
+            text-decoration: none;
+            color: white;
+        }
+        header a:hover {
+            color: rgb(139, 137, 137);
+            transition: all 0.3s;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+        main {
+            margin: auto;
+            margin-top: 300px;
+        }
+        #form-reg {
+            border: 1px solid teal;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        #form-reg div {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
+        #form-reg input {
+            padding: 5px;
+
+        }
+        #form-reg button {
+            background-color: none;
+            border: 1px solid teal;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #form-reg button:hover {
+            transform: scale(1.1);
+            transition: all 0.2s;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <ul>
+            <li><a href="">Главная</a></li>
+            <li><a href="">Регистрация</a></li>
+            <li><a href="">Войти</a></li>
+        </ul>
+    </header>
+    <main>
+        <form action="" id="form-reg">
+            <div class="cont-reg">
+                <label for="login">Логин</label>
+                <input type="text" name="login" id="inp-login" required title="Введите логин" placeholder="Введите логин">
+            </div>
+            <div class="cont-reg">
+                <label for="pass">Пароль</label>
+                <input type="password" name="pass" id="inp-pass" required title="Введите пароль" placeholder="Введите пароль">
+            </div>
+            <div class="cont-reg">
+                <label for="fio">ФИО</label>
+                <input type="text" name="fio" id="inp-fio" required title="Введите ФИО" placeholder="Введите ФИО">
+            </div>
+            <div class="cont-reg">
+                <label for="tel">Телефон</label>
+                <input type="tel" name="tel" id="inp-tel" required title="Введите телефон" placeholder="Введите телефон">
+            </div>
+            <div class="cont-reg">
+                <label for="email">Почта</label>
+                <input type="email" name="email" id="inp-email" required title="Введите почту" placeholder="Введите почту">
+            </div>
+            <button type="submit" id="form-btn">Зарегистрироваться</button>
+        </form>
+    </main>
+    <script>
+        const form = document.getElementById("form-reg");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const log = document.getElementById("inp-log").value.trim()
+            const pass = document.getElementById("inp-pass").value.trim()
+            const fio = document.getElementById("inp-fio").value.trim()
+            const tel = document.getElementById("inp-tel").value.trim()
+            const email = document.getElementById("inp-email").value.trim()
+
+            if(!log || !pass || !fio || !tel || !email) {
+                alert("Заполните все данные!")
+                return
+            }
+
+            const user = {
+                login: log,
+                password: pass,
+                fio: fio,
+                tel: tel,
+                email: email
+            }
+
+            localStorage.setItem("user", JSON.stringify(user));
+            
+            alert("Регистрация успешна!")
+
+            form.reset();
+        })
+    </script>
+    <!-- <script>
+        const log = "admin";
+        const pass = "admin";
+
+        const form = document.getElementById("form-reg");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const inpLog = document.getElementById("inp-login").value;
+            const inpPass = document.getElementById("inp-pass").value;
+
+            if(log != inpLog && pass != inpPass) {
+                alert("Логин или пароль не совпадают")
+            } else {
+                alert("Успешно!")
+            }
+        })
+    </script> -->
 </body>
 </html>
