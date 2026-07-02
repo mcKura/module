@@ -83,5 +83,18 @@
             <li><a href="auth.html">Войти</a></li>
         </ul>
     </header>
+    <main>
+        <div id="clientDiv">
+
+        </div>
+    </main>
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+        const fio = user.fio;
+
+        const div = document.getElementById("clientDiv");
+
+        div.innerHTML = `<p>${fio}</p>`;
+    </script>
 </body>
 </html>

@@ -73,12 +73,15 @@
             transform: scale(1.1);
             transition: all 0.2s;
         }
+        #cabinet {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <header>
         <ul>
-            <li><a href="user.html">Личный кабинет</a></li>
+            <li><a href="user.html" id="cabinet">Личный кабинет</a></li>
             <li><a href="registr.html">Регистрация</a></li>
             <li><a href="auth.html">Войти</a></li>
         </ul>
@@ -132,6 +135,9 @@
                 tel: tel,
                 email: email
             }
+
+            const cabinet = document.getElementById("cabinet");
+            cabinet.style.display = "block"
 
             localStorage.setItem("user", JSON.stringify(user));
             
