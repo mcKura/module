@@ -73,9 +73,6 @@
             transform: scale(1.1);
             transition: all 0.2s;
         }
-        #cabinet {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -137,7 +134,6 @@
             }
 
             const cabinet = document.getElementById("cabinet");
-            cabinet.style.display = "block"
 
             localStorage.setItem("user", JSON.stringify(user));
             

@@ -73,9 +73,7 @@
             transform: scale(1.1);
             transition: all 0.2s;
         }
-        #cabinet {
-            display: none;
-        }
+
     </style>
 </head>
 <body>
@@ -116,7 +114,6 @@
 
             if(user.login === log && user.password === pass) {
                 alert("Вход выполнен!");
-                cabinet.style.display = "block"
             } else {
                 alert("Неверный логин или пароль!")
             }

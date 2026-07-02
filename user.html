@@ -90,11 +90,15 @@
     </main>
     <script>
         const user = JSON.parse(localStorage.getItem("user"));
-        const fio = user.fio;
-
         const div = document.getElementById("clientDiv");
+        if(!user || !user.login) {
+            div.innerHTML = "Пожалуйста войдите в аккаунт <a href='auth.html'>Войти!</a>";
+        } else {
+            const fio = user.fio;
+            div.innerHTML = `<p>${fio}</p>`;
+        }
+        
 
-        div.innerHTML = `<p>${fio}</p>`;
     </script>
 </body>
 </html>
