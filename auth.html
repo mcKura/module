@@ -73,12 +73,15 @@
             transform: scale(1.1);
             transition: all 0.2s;
         }
+        #cabinet {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <header>
         <ul>
-            <li><a href="user.html">Личный кабинет</a></li>
+            <li><a href="user.html" id="cabinet">Личный кабиинет</a></li>
             <li><a href="registr.html">Регистрация</a></li>
             <li><a href="auth.html">Войти</a></li>
         </ul>
@@ -93,72 +96,31 @@
                 <label for="pass">Пароль</label>
                 <input type="password" name="pass" id="inp-pass" required title="Введите пароль" placeholder="Введите пароль">
             </div>
-            <div class="cont-reg">
-                <label for="fio">ФИО</label>
-                <input type="text" name="fio" id="inp-fio" required title="Введите ФИО" placeholder="Введите ФИО">
-            </div>
-            <div class="cont-reg">
-                <label for="tel">Телефон</label>
-                <input type="tel" name="tel" id="inp-tel" required title="Введите телефон" placeholder="Введите телефон">
-            </div>
-            <div class="cont-reg">
-                <label for="email">Почта</label>
-                <input type="email" name="email" id="inp-email" required title="Введите почту" placeholder="Введите почту">
-            </div>
-            <button type="submit" id="form-btn">Зарегистрироваться</button>
+            <button type="submit" id="form-btn">Войти</button>
+            <a href="registr.html">Регистрация</a>
+
         </form>
     </main>
     <script>
-        const form = document.getElementById("form-reg");
+        const cabinet = document.getElementById("cabinet");
+        
+        const form = document.getElementById("form-reg")
 
         form.addEventListener("submit", (e) => {
-            e.preventDefault();
+            e.preventDefault()
 
-            const log = document.getElementById("inp-login").value.trim()
-            const pass = document.getElementById("inp-pass").value.trim()
-            const fio = document.getElementById("inp-fio").value.trim()
-            const tel = document.getElementById("inp-tel").value.trim()
-            const email = document.getElementById("inp-email").value.trim()
-
-            if(!log || !pass || !fio || !tel || !email) {
-                alert("Заполните все данные!")
-                return
-            }
-
-            const user = {
-                login: log,
-                password: pass,
-                fio: fio,
-                tel: tel,
-                email: email
-            }
-
-            localStorage.setItem("user", JSON.stringify(user));
+            const log = document.getElementById("inp-login").value.trim();
+            const pass = document.getElementById("inp-pass").value.trim();
             
-            alert("Регистрация успешна!")
-            location.href = "auth.html"
+            const user = JSON.parse(localStorage.getItem("user"))
 
-            form.reset();
+            if(user.login === log && user.password === pass) {
+                alert("Вход выполнен!");
+                cabinet.style.display = "block"
+            } else {
+                alert("Неверный логин или пароль!")
+            }
         })
     </script>
-    <!-- <script>
-        const log = "admin";
-        const pass = "admin";
-
-        const form = document.getElementById("form-reg");
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const inpLog = document.getElementById("inp-login").value;
-            const inpPass = document.getElementById("inp-pass").value;
-
-            if(log != inpLog && pass != inpPass) {
-                alert("Логин или пароль не совпадают")
-            } else {
-                alert("Успешно!")
-            }
-        })
-    </script> -->
 </body>
 </html>
